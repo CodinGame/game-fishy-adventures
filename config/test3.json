@@ -1,0 +1,9 @@
+{
+	"title": {
+		"2": "Close eggs",
+		"1": "Oeufs proches"
+	},
+	"testIn": "0 5 3 2",
+	"isTest": "true",
+	"isValidator": "false"
+}

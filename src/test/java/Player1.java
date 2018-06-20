@@ -3,10 +3,19 @@ import java.util.Scanner;
 public class Player1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        int eggX = scanner.nextInt();
+        int eggY = scanner.nextInt();
         while (true) {
-            String input = scanner.nextLine();
-            System.out.println("my output");
+            int fishX = scanner.nextInt();
+            int fishY = scanner.nextInt();
+
+            if (fishY > eggY) {
+                System.out.println("UP");
+            } else if (fishY < eggY) {
+                System.out.println("DOWN");
+            } else {
+                System.out.println("STILL");
+            }
         }
     }
 }

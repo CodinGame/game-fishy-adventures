@@ -1,0 +1,7 @@
+read eggX:int eggY:int
+gameloop
+read fishX:int fishY:int
+write STILL
+
+OUTPUT
+UP | DOWN | STILL
