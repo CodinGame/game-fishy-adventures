@@ -73,7 +73,7 @@ public class Referee extends AbstractReferee {
 
         // Check win condition
         if (fishPosition.equals(eggPosition)) {
-            gameManager.winGame("Yum!");
+            gameManager.winGame("Congrats!");
             eggSprite.setScale(0);
         }
 
