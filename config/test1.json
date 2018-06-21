@@ -3,7 +3,7 @@
 		"2": "Three eggs",
 		"1": "Trois oeufs"
 	},
-	"testIn": "3\\n0 4 6 1 12 5 14 3",
+	"testIn": "3\n0 4 6 1 12 5 14 3",
 	"isTest": "true",
 	"isValidator": "false"
 }
