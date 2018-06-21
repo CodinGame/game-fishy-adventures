@@ -1,12 +1,12 @@
 <div class="statement-body">
 <div class="statement-section statement-goal">
    <h2><span class="icon icon-goal">&nbsp;</span><span>Goal </span></h2>
-   <span class="question-statement">In this game, you control a mom fish trying to get back to her eggs. She's so worried she keeps swimming forward, but you can help her to decide whether she must go <const>UP</const>, <const>DOWN</const> or stay <const>STILL</const> on the same height.<br><br>The game is played on a grid of <strong>15</strong> cells wide and <strong>6</strong> cells high. The cell on the top right corner's coordinate is (0, 0). Each turn, the fish goes one cell to the <strong>right</strong>. To succeed your mission, you must lead the fish to her eggs.</span>
+   <span class="question-statement">In this game, you control a mom fish trying to get back to her eggs. She's so worried she keeps swimming forward, but you can help her to decide whether she must go <const>UP</const>, <const>DOWN</const> or stay <const>STILL</const> on the same height.<br><br>The game is played on a grid of <strong>15</strong> cells wide and <strong>6</strong> cells high. The cell on the top right corner's coordinate is (0, 0). Each turn, the fish goes one cell to the <strong>right</strong>. To succeed your mission, you must lead the fish to <strong>at least one</strong> of her eggs. Collect as many eggs as you can.</span>
 </div>
 <div class="statement-section statement-protocol">
    <div class="blk">
       <div class="title">Initialization input</div>
-      <div class="question-statement-input">2 integers <var>eggX</var> and <var>eggY</var> representing the position of the group of eggs.</div>
+      <div class="question-statement-input">First line: <var>eggsCount</var>, the number of eggs lost in the ocean.<br/><br/>The <var>eggsCount</var> next lines: 2 integers <var>eggX</var> and <var>eggY</var> representing the position of one group of eggs.</div>
       <div class="title">Input for a game round</div>
       <div class="question-statement-input">2 integers <var>fishX</var> and <var>fishY</var> representing the position of the fish.</div>
    </div>

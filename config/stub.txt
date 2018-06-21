@@ -1,4 +1,5 @@
-read eggX:int eggY:int
+read eggsCount:int
+loop eggsCount read eggX:int eggY:int
 gameloop
 read fishX:int fishY:int
 write STILL
