@@ -1,7 +1,10 @@
 package com.codingame.game;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.codingame.gameengine.core.AbstractPlayer.TimeoutException;
@@ -17,10 +20,12 @@ public class Referee extends AbstractReferee {
     @Inject private GraphicEntityModule graphicEntityModule;
 
     private Coord fishPosition;
-    private Coord eggPosition;
+    private List<Coord> eggPositions = new ArrayList<>();
 
     private Sprite fishSprite;
-    private Sprite eggSprite;
+    private Map<Coord, Sprite> eggSprites = new HashMap<>();
+    
+    private int eggsCollected = 0;
 
     @Override
     public void init() {
@@ -28,26 +33,33 @@ public class Referee extends AbstractReferee {
         
         // Draw background
         graphicEntityModule.createSprite().setImage(Constants.BACKGROUND_SPRITE);
+        
+        int eggsCount = Integer.valueOf(gameManager.getTestCase().get(0));
+        gameManager.getPlayer().sendInputLine(gameManager.getTestCase().get(0));
 
-        Integer[] positions = Arrays.stream(gameManager.getTestCase().get(0).split(" "))
+        Integer[] positions = Arrays.stream(gameManager.getTestCase().get(1).split(" "))
             .map(s -> Integer.valueOf(s))
             .toArray(size -> new Integer[size]);
         fishPosition = new Coord(positions[0], positions[1]);
-        eggPosition = new Coord(positions[2], positions[3]);
+        
+        for (int i = 0; i < eggsCount; i++) {
+            Coord position = new Coord(positions[i * 2 + 2], positions[i * 2 + 3]);
+            eggPositions.add(position);
 
-        eggSprite = graphicEntityModule.createSprite().setImage(Constants.EGGS_SPRITE)
-            .setX(eggPosition.x * Constants.CELL_SIZE + Constants.CELL_OFFSET)
-            .setY(eggPosition.y * Constants.CELL_SIZE + Constants.CELL_OFFSET)
-            .setAnchor(.5)
-            .setZIndex(1);
+            eggSprites.put(position, graphicEntityModule.createSprite().setImage(Constants.EGGS_SPRITE)
+                .setX(position.x * Constants.CELL_SIZE + Constants.CELL_OFFSET)
+                .setY(position.y * Constants.CELL_SIZE + Constants.CELL_OFFSET)
+                .setAnchor(.5)
+                .setZIndex(1));
+            
+            gameManager.getPlayer().sendInputLine(position.toString());
+        }
 
         fishSprite = graphicEntityModule.createSprite().setImage(Constants.FISH_SPRITE)
             .setX(fishPosition.x * Constants.CELL_SIZE + Constants.CELL_OFFSET)
             .setY(fishPosition.y * Constants.CELL_SIZE + Constants.CELL_OFFSET)
             .setAnchor(.5)
             .setZIndex(2);
-
-        gameManager.getPlayer().sendInputLine(eggPosition.toString());
     }
 
     @Override
@@ -71,13 +83,25 @@ public class Referee extends AbstractReferee {
             gameManager.loseGame("Timeout!");
         }
 
+        // Check if an egg is picked up
+        if (eggPositions.contains(fishPosition)) {
+            eggsCollected++;
+            eggPositions.remove(fishPosition);
+            Sprite s = eggSprites.get(fishPosition);
+            s.setScale(0);
+        }
+        
         // Check win condition
-        if (fishPosition.equals(eggPosition)) {
-            gameManager.winGame("Congrats!");
-            eggSprite.setScale(0);
+        if (fishPosition.x >= Constants.COLUMNS - 1 && eggsCollected > 0) {
+            gameManager.winGame(String.format("Congrats! You collected %d eggs!", eggsCollected));
         }
 
         updateView();
+    }
+
+    @Override
+    public void onEnd() {
+        gameManager.putMetadata("eggs", String.valueOf(eggsCollected));
     }
 
     private void updateView() {
