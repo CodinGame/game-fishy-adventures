@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/*
+ * A basic example AI for the game.
+ * Goes to the closest reachable eggs.
+ */
+
 public class Player1 {
     private static List<Coord> eggsPositions = new ArrayList<>();
 
