@@ -5,7 +5,7 @@ public class Main {
         SoloGameRunner gameRunner = new SoloGameRunner();
 
         // Sets the player
-        gameRunner.setAgent(Player1.class);
+        gameRunner.setAgent(Solution.class);
 
         // Sets a test case
         gameRunner.setTestCase("test1.json");

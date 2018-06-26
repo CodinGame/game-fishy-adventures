@@ -7,9 +7,8 @@ import java.util.Scanner;
  * Goes to the closest reachable eggs.
  */
 
-public class Player1 {
+public class Solution {
     private static List<Coord> eggsPositions = new ArrayList<>();
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int eggsCount = scanner.nextInt();
