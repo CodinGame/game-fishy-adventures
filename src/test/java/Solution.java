@@ -15,6 +15,7 @@ public class Solution {
         for (int i = 0; i < eggsCount; i++) {
             int eggX = scanner.nextInt();
             int eggY = scanner.nextInt();
+            int eggQuantity = scanner.nextInt();
             eggsPositions.add(new Coord(eggX, eggY));
         }
 

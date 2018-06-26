@@ -64,7 +64,7 @@ public class Referee extends AbstractReferee {
             
             eggGroups.put(position, eggGroup);
             
-            gameManager.getPlayer().sendInputLine(position.toString());
+            gameManager.getPlayer().sendInputLine(position.toString() + " " + eggsQuantity);
         }
 
         fishSprite = graphicEntityModule.createSprite().setImage(Constants.FISH_SPRITE)
