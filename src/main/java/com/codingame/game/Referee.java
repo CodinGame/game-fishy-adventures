@@ -29,7 +29,7 @@ public class Referee extends AbstractReferee {
         // Draw background
         graphicEntityModule.createSprite().setImage(Constants.BACKGROUND_SPRITE);
 
-        Integer[] positions = Arrays.stream(gameManager.getTestCase().get(0).split(" "))
+        Integer[] positions = Arrays.stream(gameManager.getTestCaseInput().get(0).split(" "))
             .map(s -> Integer.valueOf(s))
             .toArray(size -> new Integer[size]);
         fishPosition = new Coord(positions[0], positions[1]);
