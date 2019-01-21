@@ -110,7 +110,7 @@ public class Referee extends AbstractReferee {
         if ((fishPosition.y == 0 && action == Action.UP)
             || (fishPosition.y == Constants.ROWS - 1 && action == Action.DOWN)
             || fishPosition.add(Coord.RIGHT).x > Constants.COLUMNS - 1) {
-            gameManager.loseGame("Your fish swimmed out of the game zone.");
+            gameManager.loseGame("Your fish swum out of the game zone.");
         }
     }
 }
