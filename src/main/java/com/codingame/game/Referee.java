@@ -35,10 +35,10 @@ public class Referee extends AbstractReferee {
         // Draw background
         graphicEntityModule.createSprite().setImage(Constants.BACKGROUND_SPRITE);
         
-        int eggsCount = Integer.valueOf(gameManager.getTestCase().get(0));
-        gameManager.getPlayer().sendInputLine(gameManager.getTestCase().get(0));
+        int eggsCount = Integer.valueOf(gameManager.getTestCaseInput().get(0));
+        gameManager.getPlayer().sendInputLine(gameManager.getTestCaseInput().get(0));
 
-        Integer[] testInputs = Arrays.stream(gameManager.getTestCase().get(1).split(" "))
+        Integer[] testInputs = Arrays.stream(gameManager.getTestCaseInput().get(1).split(" "))
             .map(s -> Integer.valueOf(s))
             .toArray(size -> new Integer[size]);
         fishPosition = new Coord(testInputs[0], testInputs[1]);
@@ -146,7 +146,7 @@ public class Referee extends AbstractReferee {
         if ((fishPosition.y == 0 && action == Action.UP)
             || (fishPosition.y == Constants.ROWS - 1 && action == Action.DOWN)
             || fishPosition.add(Coord.RIGHT).x > Constants.COLUMNS - 1) {
-            gameManager.loseGame("Your fish swimmed out of the game zone.");
+            gameManager.loseGame("Your fish swum out of the game zone.");
         }
     }
 }
